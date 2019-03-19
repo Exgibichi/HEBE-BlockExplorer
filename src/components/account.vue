@@ -3,8 +3,8 @@
         <fhead></fhead>
         <el-main >
             <el-breadcrumb class="center" separator-class="el-icon-arrow-right">
-                <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                <el-breadcrumb-item>账号地址</el-breadcrumb-item>
+                <el-breadcrumb-item :to="{ path: '/' }">Home</el-breadcrumb-item>
+                <el-breadcrumb-item>Account</el-breadcrumb-item>
             </el-breadcrumb>
             <el-card  v-loading="loading" class="box-card center" style="margin-top: 16px">
                 <div slot="header" class="clearfix">
@@ -12,28 +12,28 @@
                 </div>
 
                 <el-form  size="mini"  label-width="100px" >
-                    <el-form-item label="账号id">
+                    <el-form-item label="ID">
                         {{accounts.account}}
                     </el-form-item>
-                    <el-form-item v-if="accounts.name" label="账号名">
+                    <el-form-item v-if="accounts.name" label="Name">
                         {{accounts.name}}
                     </el-form-item>
-                    <el-form-item label="账号地址">
+                    <el-form-item label="Address">
                         {{accounts.accountRS}}
                     </el-form-item>
-                    <el-form-item label="账号公钥">
+                    <el-form-item label="PublicKey">
                         {{accounts.publicKey}}
                     </el-form-item>
-                    <el-form-item label="账号余额">
+                    <el-form-item label="Balance">
                         {{$g.wallet.amount(accounts.balanceNQT)}}
                     </el-form-item>
-                    <el-form-item label="锻造数量">
+                    <el-form-item label="LessorsSum">
                         {{$g.wallet.amount(lessorsSum)}}
                     </el-form-item>
-                    <el-form-item label="锻造收益">
+                    <el-form-item label="ForgedBalance">
                         {{$g.wallet.amount(accounts.forgedBalanceNQT)}}
                     </el-form-item>
-                    <el-form-item v-if="accounts.description&&accounts.description!=''" label="账号描述">
+                    <el-form-item v-if="accounts.description&&accounts.description!=''" label="Description">
                         {{accounts.description}}
                     </el-form-item>
                 </el-form>
@@ -79,7 +79,7 @@
                             </el-form-item>
                         </el-form>
                     </el-collapse-item>
-                    <el-collapse-item title="交易信息列表" name="2">
+                    <el-collapse-item title="Txs" name="2">
                         <el-table v-loading="transactionsing" :data="transactions" border style="width: 100%">
                             <el-table-column
                                     label="id"
@@ -89,7 +89,7 @@
                                 </template>
                             </el-table-column>
                             <el-table-column
-                                    label="发送地址"
+                                    label="Sender"
                                     width="280">
                                 <template slot-scope="scope">
                                     <router-link v-if="scope.row.senderRS!=account" :to="'/account/'+scope.row.senderRS">
@@ -101,7 +101,7 @@
                                 </template>
                             </el-table-column>
                             <el-table-column
-                                    label="接收地址"
+                                    label="Recipient"
                                     width="280">
                                 <template slot-scope="scope">
                                     <router-link v-if="scope.row.recipientRS!=account" :to="'/account/'+scope.row.recipientRS">
@@ -113,21 +113,21 @@
                                 </template>
                             </el-table-column>
                             <el-table-column
-                                    label="数量"
+                                    label="Amount"
                                     width="180">
                                 <template slot-scope="scope">
                                     {{$g.wallet.amount(scope.row.amountNQT)}}
                                 </template>
                             </el-table-column>
                             <el-table-column
-                                    label="手续费"
+                                    label="Fee"
                                     width="180">
                                 <template slot-scope="scope">
                                     {{$g.wallet.amount(scope.row.feeNQT)}}
                                 </template>
                             </el-table-column>
                             <el-table-column
-                                    label="时间"
+                                    label="Time"
                                     width="180">
                                 <template slot-scope="scope">
                                     {{$g.wallet.formatDateTime(scope.row.timestamp*1000+($store.state.epochBeginning-500))}}
@@ -214,8 +214,8 @@
                     '&firstIndex='+(this.currentPage-1)*14+'&lastIndex='+((this.currentPage-1)*14+14),
                 }).then(response => {
                     if(response.errorCode){
-                        this.$alert('账号地址错误', '提示', {
-                            confirmButtonText: '确定',
+                        this.$alert('账号地址错误', 'search', {
+                            confirmButtonText: 'confirm',
                         });
                     }else{
                         this.transactions=this.transactions.concat(response.transactions);
@@ -234,8 +234,8 @@
                     url: 'requestType=getAccountLessors&account='+this.account,
                 }).then(response => {
                     if(response.errorCode){
-                        this.$alert('账号地址错误', '提示', {
-                            confirmButtonText: '确定',
+                        this.$alert('账号地址错误', 'search', {
+                            confirmButtonText: 'confirm',
                         });
                     }
                     else{
@@ -262,8 +262,8 @@
                     url: 'requestType=getAccount&account='+this.account,
                 }).then(response => {
                     if(response.errorCode){
-                        this.$alert('账号地址错误', '提示', {
-                            confirmButtonText: '确定',
+                        this.$alert('账号地址错误', 'search', {
+                            confirmButtonText: 'confirm',
                         });
                     }
                     else{

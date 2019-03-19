@@ -4,7 +4,7 @@
     <el-main >
       <el-card class="box-card center">
         <div slot="header" class="clearfix">
-          <span>区块</span>
+          <span>Last blocks</span>
         </div>
         <el-table
                 v-loading="BlocksLoading"
@@ -18,7 +18,7 @@
                       border
                       style="width: 100%">
                 <el-table-column
-                        label="发送地址"
+                        label="Sender"
                         width="280">
                   <template slot-scope="scope">
                     <router-link :to="'/account/'+scope.row.senderRS">
@@ -27,7 +27,7 @@
                   </template>
                 </el-table-column>
                 <el-table-column
-                        label="接收地址"
+                        label="Recipient"
                         width="280">
                   <template slot-scope="scope">
                     <router-link :to="'/account/'+scope.row.recipientRS">
@@ -36,14 +36,14 @@
                   </template>
                 </el-table-column>
                 <el-table-column
-                        label="数量"
+                        label="Amount"
                         width="180">
                   <template slot-scope="scope">
                     {{$g.wallet.amount(scope.row.amountNQT)}}
                   </template>
                 </el-table-column>
                 <el-table-column
-                        label="手续费"
+                        label="Fee"
                         width="180">
                   <template slot-scope="scope">
                     {{$g.wallet.amount(scope.row.feeNQT)}}
@@ -54,7 +54,7 @@
           </el-table-column>
 
           <el-table-column
-                  label="高度"
+                  label="Height"
                   width="180">
             <template  slot-scope="scope">
               <router-link :to="'block/'+scope.row.height">
@@ -63,21 +63,21 @@
             </template>
           </el-table-column>
           <el-table-column
-                  label="日期"
+                  label="Time"
                   width="180">
             <template slot-scope="scope">
               {{$g.wallet.formatDateTime(scope.row.timestamp*1000+($store.state.epochBeginning-500))}}
             </template>
           </el-table-column>
           <el-table-column
-                  label="转账数量"
+                  label="TotalAmount"
                   width="180">
             <template slot-scope="scope">
               {{$g.wallet.amount(scope.row.totalAmountNQT)}}
             </template>
           </el-table-column>
           <el-table-column
-                  label="交易费"
+                  label="TotalFee"
                   width="120">
             <template slot-scope="scope">
               {{$g.wallet.amount(scope.row.totalFeeNQT)}}
@@ -85,11 +85,11 @@
           </el-table-column>
           <el-table-column
                   prop="transactions.length"
-                  label="交易数"
+                  label="Tx count"
                   width="80">
           </el-table-column>
           <el-table-column
-                  label="出块者"
+                  label="Forger"
                   width="280">
             <template slot-scope="scope">
               <router-link :to="'/account/'+scope.row.generatorRS">
@@ -101,8 +101,8 @@
       </el-card>
       <el-card class="box-card center" style="margin-top: 60px">
         <div slot="header" class="clearfix">
-          <span>锻造池</span>
-          <span style="color: #909399;">（锻造人数：{{nextBlock.activeCount}}，非全部锻造人数）</span>
+          <span>Forgers</span>
+          <span style="color: #909399;">（Active forgers：{{nextBlock.activeCount}}）</span>
         </div>
         <el-table
                 v-loading="nextBlockLoading"
@@ -116,7 +116,7 @@
                       border
                       style="width: 460px">
                 <el-table-column
-                        label="出租地址"
+                        label="lessor"
                         width="280">
                   <template slot-scope="scope">
                     <router-link :to="'/account/'+scope.row.lessorRS">
@@ -125,7 +125,7 @@
                   </template>
                 </el-table-column>
                 <el-table-column
-                        label="出租数量"
+                        label="guaranteedBalance"
                         width="180">
                   <template slot-scope="scope">
                     {{$g.wallet.amount(scope.row.guaranteedBalanceNQT)}}
@@ -135,7 +135,7 @@
             </template>
           </el-table-column>
           <el-table-column
-                  label="账户地址"
+                  label="Account"
                   width="280">
             <template slot-scope="scope">
               <router-link :to="'/account/'+scope.row.accountRS">
@@ -144,7 +144,7 @@
             </template>
           </el-table-column>
           <el-table-column
-                  label="锻造数量"
+                  label="effectiveBalance"
                   width="180">
             <template slot-scope="scope">
               <div v-if="scope.row.effectiveBalanceNXT">
@@ -157,11 +157,11 @@
           </el-table-column>
           <el-table-column
                   prop="sum"
-                  label="出租人数量"
+                  label="Sum"
                   width="180">
           </el-table-column>
           <el-table-column
-                  label="出块时间"
+                  label="Time"
                   width="180">
             <template slot-scope="scope">
               {{$g.wallet.formatDateTime(scope.row.hitTime*1000+($store.state.epochBeginning-500))}}
@@ -169,7 +169,7 @@
           </el-table-column>
           <el-table-column
                   prop="deadline"
-                  label="出块倒计时间"
+                  label="Deadline"
                   width="180">
           </el-table-column>
 

@@ -4,10 +4,10 @@
           <el-row type="flex">
               <el-col :span="24">
                   <router-link to="/">
-                     <img class="img" src="./../assets/logo2.png"/>
-                     <div class="logoTxt">Hebe Explorer</div>
+                     <!-- <img class="img" src="./../assets/logo2.png"/> -->
+                     <div class="logoTxt">ICBC Explorer</div>
                   </router-link>
-                  <el-dropdown class="el_dropdown" @command="handleCommand">
+                  <!-- <el-dropdown class="el_dropdown" @command="handleCommand">
                       <span class="el-dropdown-link">
                         {{$store.state.apiText}}区块浏览器<i class="el-icon-arrow-down el-icon--right"></i>
                       </span>
@@ -28,7 +28,7 @@
                               <el-dropdown-item>APL 区块浏览器</el-dropdown-item>
                           </a>
                       </el-dropdown-menu>
-                  </el-dropdown>
+                  </el-dropdown> -->
                   <el-button @click="search" style="float: right;margin-top: 10px;" icon="el-icon-search" circle></el-button>
               </el-col>
           </el-row>
@@ -51,9 +51,9 @@
                 }
             },
             search(){
-                this.$prompt('请输入账号地址/区块高度', '提示', {
-                    confirmButtonText: '确定',
-                    cancelButtonText: '取消',
+                this.$prompt('请输入账号地址/区块高度', 'search', {
+                    confirmButtonText: 'confirm',
+                    cancelButtonText: 'cancel',
                 }).then(({ value }) => {
                     if(value.indexOf('-')!=-1){
                         this.$router.replace('/account/'+value);

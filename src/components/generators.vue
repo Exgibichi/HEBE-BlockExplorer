@@ -3,8 +3,8 @@
         <fhead></fhead>
         <el-main >
             <el-breadcrumb class="center" separator-class="el-icon-arrow-right">
-                <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                <el-breadcrumb-item>所有区块</el-breadcrumb-item>
+                <el-breadcrumb-item :to="{ path: '/' }">Home</el-breadcrumb-item>
+                <el-breadcrumb-item>Blocks</el-breadcrumb-item>
             </el-breadcrumb>
             <el-card class="box-card center" style="margin-top: 16px">
                 <div slot="header" class="clearfix">

@@ -2,7 +2,7 @@ import store from './../store/index'
 import axios from 'axios'
 
 axios.interceptors.request.use(function (config) {
-        config.url=store.state.api+config.url+'&chain=1';
+        config.url=store.state.api+config.url;
         return config;
   },
   function (error) {

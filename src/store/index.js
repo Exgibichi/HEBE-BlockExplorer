@@ -5,7 +5,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state:{
         epochBeginning:"",
-        api:'http://39.104.107.100/nxt?',
+        api:'http://127.0.0.1:7876/nxt?',
         apiText:'HEBE'
     }
 })

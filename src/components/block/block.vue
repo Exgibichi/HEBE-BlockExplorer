@@ -3,8 +3,8 @@
         <fhead></fhead>
         <el-main >
             <el-breadcrumb class="center" separator-class="el-icon-arrow-right">
-                <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                <el-breadcrumb-item :to="{ path: '/blocks' }">所有区块</el-breadcrumb-item>
+                <el-breadcrumb-item :to="{ path: '/' }">Home</el-breadcrumb-item>
+                <el-breadcrumb-item :to="{ path: '/blocks' }">Blocks</el-breadcrumb-item>
                 <el-breadcrumb-item>区块高度</el-breadcrumb-item>
             </el-breadcrumb>
             <el-card  v-loading="loading" class="box-card center" style="margin-top: 16px">
@@ -15,39 +15,39 @@
                 </div>
 
                 <el-form  size="mini"  label-width="100px" >
-                    <el-form-item label="区块id">
+                    <el-form-item label="ID">
                         {{Blocks.block}}
                     </el-form-item>
-                    <el-form-item label="区块高度">
+                    <el-form-item label="Height">
                         {{Blocks.height}}
                     </el-form-item>
-                    <el-form-item label="区块时间">
+                    <el-form-item label="Time">
                         {{$g.wallet.formatDateTime(Blocks.timestamp*1000+($store.state.epochBeginning-500))}}
                     </el-form-item>
-                    <el-form-item label="区块锻造者">
+                    <el-form-item label="Forger">
                         <router-link :to="'/account/'+Blocks.generatorRS">
                             <el-button style="font-size: 14px" type="text"> {{Blocks.generatorRS}}</el-button>
                         </router-link>
                     </el-form-item>
-                    <el-form-item label="区块交易数">
+                    <el-form-item label="Txs count">
                         {{Blocks.transactions.length}}
                     </el-form-item>
-                    <el-form-item label="总转账数量">
+                    <el-form-item label="TotalAmount">
                         {{$g.wallet.amount(Blocks.totalAmountNQT)}}
                     </el-form-item>
-                    <el-form-item label="区块交易费">
+                    <el-form-item label="TotalFee">
                         {{$g.wallet.amount(Blocks.totalFeeNQT)}}
                     </el-form-item>
                 </el-form>
 
                 <el-collapse v-model="activeNames">
-                    <el-collapse-item title="交易信息列表" name="1">
+                    <el-collapse-item title="Transactions" name="1">
                         <el-table
                                 :data="Blocks.transactions"
                                 border
                                 style="width: 100%">
                             <el-table-column
-                                    label="发送地址"
+                                    label="Sender"
                                     width="280">
                                 <template slot-scope="scope">
                                     <router-link :to="'/account/'+scope.row.senderRS">
@@ -56,7 +56,7 @@
                                 </template>
                             </el-table-column>
                             <el-table-column
-                                    label="接收地址"
+                                    label="Recipient"
                                     width="280">
                                 <template slot-scope="scope">
                                     <router-link :to="'/account/'+scope.row.recipientRS">
@@ -65,14 +65,14 @@
                                 </template>
                             </el-table-column>
                             <el-table-column
-                                    label="数量"
+                                    label="Amount"
                                     width="180">
                                 <template slot-scope="scope">
                                     {{$g.wallet.amount(scope.row.amountNQT)}}
                                 </template>
                             </el-table-column>
                             <el-table-column
-                                    label="手续费"
+                                    label="Fee"
                                     width="180">
                                 <template slot-scope="scope">
                                     {{$g.wallet.amount(scope.row.feeNQT)}}
@@ -135,8 +135,8 @@
                 })
                     .then(response => {
                     if(response.errorCode){
-                        this.$alert('高度错误', '提示', {
-                            confirmButtonText: '确定',
+                        this.$alert('高度错误', 'search', {
+                            confirmButtonText: 'confirm',
                             callback: action => {
                                 this.$router.replace('/blocks');
                             }
