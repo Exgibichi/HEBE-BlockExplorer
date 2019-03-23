@@ -5,13 +5,13 @@
             <el-breadcrumb class="center" separator-class="el-icon-arrow-right">
                 <el-breadcrumb-item :to="{ path: '/' }">Home</el-breadcrumb-item>
                 <el-breadcrumb-item :to="{ path: '/blocks' }">Blocks</el-breadcrumb-item>
-                <el-breadcrumb-item>区块高度</el-breadcrumb-item>
+                <el-breadcrumb-item>block info</el-breadcrumb-item>
             </el-breadcrumb>
             <el-card  v-loading="loading" class="box-card center" style="margin-top: 16px">
                 <div slot="header" class="clearfix">
                     <span>{{height}}</span>
-                    <el-button @click="update(0)" style="float: right; padding: 3px 0" type="text">下一个区块</el-button>
-                    <el-button @click="update(1)" style="float: right; padding: 3px 0;margin-right: 20px" type="text">上一个区块</el-button>
+                    <el-button @click="update(0)" style="float: right; padding: 3px 0" type="text">next</el-button>
+                    <el-button @click="update(1)" style="float: right; padding: 3px 0;margin-right: 20px" type="text">previous</el-button>
                 </div>
 
                 <el-form  size="mini"  label-width="100px" >
